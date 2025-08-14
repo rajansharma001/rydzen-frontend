@@ -59,9 +59,11 @@ const Header = () => {
               </div>
               {NavMenu &&
                 NavMenu.map((nav, index) => (
-                  <div className="w-full flex flex-col justify-start gap-3 px-20">
+                  <div
+                    key={index}
+                    className="w-full flex flex-col justify-start gap-3 px-20"
+                  >
                     <Link
-                      key={index}
                       href={nav.link}
                       className={`${linkeSytle} font-bold uppercase text-[16px] text-white mt-5`}
                     >

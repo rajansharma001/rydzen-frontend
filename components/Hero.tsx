@@ -56,7 +56,7 @@ const Hero = () => {
             src={currentSlide.slideImage}
             width={1080}
             height={720}
-            alt="Slide"
+            alt={currentSlide.slideText}
             className="w-full  object-contain transition-all duration-700 ease-in-out "
           />
         </div>
