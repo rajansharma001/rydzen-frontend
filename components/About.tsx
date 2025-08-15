@@ -41,11 +41,11 @@ const About = () => {
         </div>
         <div className=" w-full lg:w-[50%] md:w-[50%] mt-60 lg:mt-0 md:mt-0 flex flex-col justify-center items-start gap-3">
           <div className="w-full flex items-center justify-center lg:justify-start md:justify-start">
-            <SectionTitle title="ABOUT OUR COMPANY" />
+            <SectionTitle
+              heading="ABOUT OUR COMPANY"
+              title="Welcome to Our Dealaro Car Dealer Company"
+            />
           </div>
-          <h1 className="lg:text-4xl md:text-2xl text-xl font-bold font-sans text-text-primary text-center lg:text-start md:text-start">
-            Welcome to Our Dealaro Car Dealer Company
-          </h1>
           <p className="text-sm text-text-secondary gap-3 text-justify ">
             Progressively develop out-of-the-box initiatives with superior
             opportunities. Interactively streamline cross-media partnerships

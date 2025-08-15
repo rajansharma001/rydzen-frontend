@@ -1,4 +1,5 @@
 import About from "../../components/About";
+import BrowseByCategory from "../../components/BrowseByCategory";
 import CarFilterForm from "../../components/CarFilterForm";
 import Hero from "../../components/Hero";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <CarFilterForm />
       <About />
+      <BrowseByCategory />
     </div>
   );
 }
