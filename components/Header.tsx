@@ -33,7 +33,10 @@ const Header = () => {
       <div className="lg:w-[75%] w-full flex justify-end items-center lg:px-15 md:px-10 px-5">
         <div className="lg:w-[70%] w-[50%] flex items-center justify-center">
           {/* small device menu */}
-          <button onClick={() => setSideMenuOpen(!sideMenuOpen)}>
+          <button
+            onClick={() => setSideMenuOpen(!sideMenuOpen)}
+            className="lg:hidden flex"
+          >
             <Menu
               size={28}
               className={`text-text-primary ml-15 ${linkeSytle} `}

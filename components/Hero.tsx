@@ -63,8 +63,8 @@ const Hero = () => {
       </div>
       {/* slide navigation button */}
       <div className="absolute bottom-0 lg:top-[50%] md:top-[50%] w-full flex justify-between items-center">
-        <Button btnTitle="<<" clickEvent={prevSlide} />
-        <Button btnTitle=">>" clickEvent={nextSlide} />
+        <Button btnStyle="" btnTitle="<<" clickEvent={prevSlide} />
+        <Button btnStyle="" btnTitle=">>" clickEvent={nextSlide} />
       </div>
     </div>
   );
