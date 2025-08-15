@@ -20,14 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="w-full bg-black max-h-screen">
+    <html lang="en" className="">
+      <body className=" w-full ">
         <header className="w-full">
           <TopBar />
           <Header />
         </header>
-        <div className="w-full">{children}</div>
-        <footer className=" bottom-0 p-0">
+        <div className=" w-full h-full ">{children}</div>
+        <footer className="w-full  bottom-0  lg:mt-10 md:mt-40 mt-80">
           <Footer />
           <FooterCredit />
         </footer>
