@@ -21,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="">
-      <body className=" w-full ">
+      <body className="min-h-screen flex flex-col">
         <header className="w-full">
           <TopBar />
           <Header />
         </header>
-        <div className=" w-full h-full ">{children}</div>
-        <footer className="w-full  bottom-0  lg:mt-10 md:mt-40 mt-80">
+        <main className=" w-full flex-grow ">{children}</main>
+        <footer className="w-full ">
           <Footer />
           <FooterCredit />
         </footer>

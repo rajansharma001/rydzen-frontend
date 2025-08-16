@@ -36,12 +36,14 @@ const CarCard = () => {
                     <h1>{car.brand}</h1>
                   </div>
                 </div>
-                <div className=" py-3 px-10 top-0 w-full flex justify-between  text-sm text-text-secondary font-semibold ">
-                  <h1 className="">{car.price}</h1>
-                  <h1 className="">{car.year}</h1>
+                <div className=" py-3 px-5 top-0 w-full flex justify-between items-center  text-sm text-text-secondary font-semibold ">
+                  <h1 className="text-text-primary">{car.price}</h1>
+                  <h1 className="py-1 px-2 bg-primary rounded-md text-text-primary">
+                    {car.year}
+                  </h1>
                 </div>
                 <Divider style="w-[90%]" />
-                <div className="py-3 px-10 w-full flex justify-between  text-text-secondary text-sm">
+                <div className="py-3 px-5 w-full flex justify-between  text-text-secondary text-sm">
                   <div className="gap-2 flex flex-col items-center justify-center">
                     <Fuel size={45} className="p-3 rounded-md bg-[#eff3fa]" />{" "}
                     {car.fuelType}

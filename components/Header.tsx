@@ -1,18 +1,38 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavMenu } from "../data";
 import Link from "next/link";
 import { linkeSytle } from "../style";
 import { Menu, SearchIcon, ShoppingCart, X } from "lucide-react";
 import ButtonLink from "./ButtonLink";
-import { div } from "motion/react-client";
 
 const Header = () => {
   const [sideMenuOpen, setSideMenuOpen] = useState(false);
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className="w-full p-0 m-0 bg-white flex ">
+    <div
+      className={`w-full  bg-white flex shadow-2xl shadow-gray-300 transition-all duration-300 ease-in-out    ${
+        scroll ? "top-0 fixed   z-50" : "top-11 "
+      }`}
+    >
       <div className="w-[25%] p-2 lg:p-8 md:p-8 flex gap-2 justify-center items-center bg-primary">
         <Link
           href="/"

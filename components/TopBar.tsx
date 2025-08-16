@@ -33,13 +33,9 @@ const TopBar = () => {
         <ul className="flex gap-5 text-[16px]">
           <li className="flex justify-center items-center gap-3">
             <User2Icon size={18} className="text-primary" />
-            <Link href="/#" className={`${linkeSytle}`}>
+            <Link href="/login" className={`${linkeSytle}`}>
               Login
             </Link>{" "}
-            /
-            <Link href="/#" className={`${linkeSytle}`}>
-              Signup
-            </Link>
           </li>
           <span className="text-gray-500 font-bold">|</span>
           <li className=" hover:text-primary cursor-pointer flex justify-center items-center gap-5">
