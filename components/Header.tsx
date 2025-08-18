@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavMenu } from "../data";
 import Link from "next/link";
 import { linkeSytle } from "../style";
@@ -10,6 +10,7 @@ import ButtonLink from "./ButtonLink";
 const Header = () => {
   const [sideMenuOpen, setSideMenuOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,19 @@ const Header = () => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setSideMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -65,6 +79,7 @@ const Header = () => {
 
           {/* side menu */}
           <div
+            ref={menuRef}
             className={`${
               sideMenuOpen
                 ? "min-w-[90%] translate-0"

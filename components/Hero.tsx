@@ -1,9 +1,9 @@
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Slider } from "../data";
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const [imgIndex, setImgIndex] = useState(0);
@@ -37,32 +37,49 @@ const Hero = () => {
   return (
     <div className="w-full h-[250px] lg:h-[600px] md:h-[400px] overflow-hidden  relative">
       <div className="w-full flex items-center h-full bg-[url('/slides/slideBg.png')] ">
-        <div className="w-[50%] flex">
-          <div className="w-full lg:ml-25 lg:p-10 md:lg:p-5 p-2 flex flex-col  gap-6 ">
-            <h1 className="lg:text-7xl md:text-5xl font-bold text-text-primary text-right ">
+        <div className="w-[50%] flex ">
+          <motion.div
+            className="w-full lg:ml-25 lg:p-10 md:lg:p-5 p-2 flex flex-col  gap-6 transition-all duration-300 ease-in-out "
+            key={currentSlide.slideImage}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.h1 className="lg:text-7xl md:text-5xl font-bold text-text-primary text-right ">
               {currentSlide.slideText}
-            </h1>
-            <div className="flex justify-end">
+            </motion.h1>
+            <motion.div
+              key={currentSlide.slideImage}
+              className="flex justify-end "
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 0 }}
+              transition={{ duration: 0.7 }}
+            >
               <ButtonLink
                 btnStyle=""
                 btnTitle={currentSlide.btnTitle}
                 btnLink={currentSlide.btnLink}
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-        <div className="w-[50%]  flex justify-end ">
-          <Image
+        <div className="w-[50%]  flex justify-end  ">
+          <motion.img
             src={currentSlide.slideImage}
-            width={1080}
-            height={720}
             alt={currentSlide.slideText}
-            className="w-full  object-contain transition-all duration-700 ease-in-out "
+            className="w-full  object-contain transition-all duration-700 ease-in"
+            key={currentSlide.slideImage}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 0 }}
+            transition={{ duration: 0.7 }}
           />
         </div>
       </div>
       {/* slide navigation button */}
-      <div className="absolute bottom-0 lg:top-[50%] md:top-[50%] w-full flex justify-between items-center">
+      <div className="absolute  lg:top-[50%] md:top-[50%] w-full flex justify-between items-center">
         <Button btnStyle="" btnTitle="<<" clickEvent={prevSlide} />
         <Button btnStyle="" btnTitle=">>" clickEvent={nextSlide} />
       </div>
