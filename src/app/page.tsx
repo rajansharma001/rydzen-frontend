@@ -1,3 +1,4 @@
+"use client";
 import About from "../../components/About";
 import BrowseByCategory from "../../components/BrowseByCategory";
 import CarCard from "../../components/CarCard";
