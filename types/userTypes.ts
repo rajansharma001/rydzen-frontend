@@ -4,6 +4,7 @@ export interface UserTypes {
   lastName?: string;
   email?: string;
   phone?: string;
+  password?: string;
   profileImg?: string;
   role: "admin" | "user";
   isSuspend: boolean;

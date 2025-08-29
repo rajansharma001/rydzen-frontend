@@ -6,4 +6,9 @@
   --color-text-primary: #161921;
   --color-text-secondary: #525960;
   --default-font-family: "Roboto", sans-serif;
+
+  --color-dash-primary: #ffc000;
+  --color-dash-text-primary: #ffff;
+  --color-dash-bg-primary: #000000;
+  --color-dash-bg-secondary: #222222;
 }

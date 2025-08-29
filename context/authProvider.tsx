@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/session-user`,
-        { credentials: "include" }
+        { method: "GET", credentials: "include" }
       );
       const result = await res.json();
       if (res.ok) {
