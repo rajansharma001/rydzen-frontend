@@ -8,7 +8,6 @@ import {
 import Link from "next/link";
 import React from "react";
 import { linkeSytle } from "../style";
-import Image from "next/image";
 
 const TopBar = () => {
   return (

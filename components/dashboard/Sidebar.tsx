@@ -6,8 +6,8 @@ import SideMenu from "./SideMenu";
 
 const Sidebar = () => {
   return (
-    <div className="w-full">
-      <div className="h-20 border-b-1 border-gray-700 flex items-center justify-center">
+    <div className="">
+      <div className="w-full  lg:flex md:flex h-20 border-b-1 border-gray-700  items-center justify-center">
         <Link
           href="/admin/dashboard"
           className=" flex flex-col lg:flex-row md:flex-row items-center justify-center gap-0 lg:gap-5 md:gap-3"
@@ -17,7 +17,7 @@ const Sidebar = () => {
             alt="SiteLogo"
             width={650}
             height={640}
-            className="w-[80%] lg:w-[30%] md:w-[50%] "
+            className="w-[50%] lg:w-[30%] md:w-[30%] mt-2 md:mt-0"
           />
           <h1 className="lg:text-2xl md:text-2xl text-lg font-extrabold text-dash-text-primary uppercase">
             Rydzen

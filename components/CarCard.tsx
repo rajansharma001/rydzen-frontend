@@ -50,7 +50,7 @@ const CarCard = () => {
                     src={car.image || "/slides/product_2_1.png"}
                     width={420}
                     height={150}
-                    className=" w-[80%]"
+                    className=" w-[80%] h-[150px] object-contain"
                   />
                   <div className="absolute p-3 top-0 w-full flex justify-between  text-sm text-text-secondary font-semibold ">
                     <h1>{car.name}</h1>

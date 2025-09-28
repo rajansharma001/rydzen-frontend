@@ -1,19 +1,22 @@
 "use client";
-import React, { FormEvent, useState } from "react";
-import Button from "../../../../components/Button";
+import React, { FormEvent, useEffect, useState } from "react";
 import PageHeader from "../../../../components/PageHeader";
-import { useProtectedRoute } from "../../../../context/useProtected";
 import { useRouter } from "next/navigation";
+import Button from "../../../../components/Button";
+import { UserTypes } from "../../../../types/userTypes";
 import { Loader } from "lucide-react";
+import NotificarionAlert from "../../../../components/alertAndNotification/NotificarionAlert";
 
-const Login = () => {
-  useProtectedRoute([""], true);
+const Register = () => {
   const router = useRouter();
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
   const [message, setMessage] = useState<string>("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<UserTypes>({
+    firstName: "",
+    lastName: "",
+    phone: "",
     email: "",
     password: "",
   });
@@ -26,12 +29,13 @@ const Login = () => {
     }));
   };
 
-  const handleLogin = async (e: FormEvent) => {
+  const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitLoading(true);
+
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
         {
           method: "POST",
           credentials: "include",
@@ -50,21 +54,33 @@ const Login = () => {
         setMessage(result.error);
       } else {
         setSuccess(true);
-        setMessage("Logged-in successfull.");
-        router.push("/");
+        setMessage(
+          "Account created successully. Verification link has been sent to your account. Verify your email to login. "
+        );
+        // router.push("/");
       }
     } catch (error) {
       setError(true);
-      setMessage("API ERROR.");
+      setMessage("API ERROR!");
     }
   };
+  useEffect(() => {
+    if (!message) return;
+
+    const timer = setTimeout(() => {
+      setError(false);
+      setSuccess(false);
+      setMessage("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [message]);
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <PageHeader headingTitle="Login" />
-
       <div className="lg:w-[30%] md:w-[50%] w-[90%] flex flex-col p-10 shadow-2xl shadow-gray-400 gap-5 mb-20">
         <h1 className="text-center text-2xl font-semibold text-text-primary">
-          Login
+          Register
         </h1>
         {/* notification alert */}
         {message !== "" && (
@@ -87,10 +103,35 @@ const Login = () => {
           <form
             className="w-full flex flex-col gap-5 "
             action=""
-            onSubmit={handleLogin}
+            onSubmit={handleRegister}
           >
+            {" "}
             <input
               type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="First Name"
+              className="focus:outline-primary p-4 bg-gray-100 border-1 border-gray-500 w-full"
+            />
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Last Name"
+              className="focus:outline-primary p-4 bg-gray-100 border-1 border-gray-500 w-full"
+            />
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Phone"
+              className="focus:outline-primary p-4 bg-gray-100 border-1 border-gray-500 w-full"
+            />
+            <input
+              type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -113,4 +154,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

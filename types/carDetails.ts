@@ -1,14 +1,15 @@
 export interface carDetailsTypes {
-  _id: string;
+  _id?: string;
   name: string;
   brand: string;
   model: string;
+  category: string;
   year: string;
   image: string;
   transmission: string;
   fuelType: string;
-  seatingCapacity: number;
-  mileage: number;
-  pricePerDay: number;
+  seatingCapacity: number | "";
+  mileage: number | "";
+  pricePerDay: number | "";
   availability: boolean;
 }

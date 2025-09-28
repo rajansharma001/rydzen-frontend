@@ -9,7 +9,7 @@ type Props = {
 const ButtonLink = ({ btnTitle, btnLink, btnStyle }: Props) => {
   return (
     <Link
-      href={btnLink}
+      href={`${btnLink}`}
       className={`${btnStyle} py-4 lg:px-7 px-4 bg-primary hover:bg-text-primary hover:text-white cursor-pointer transition-all duration-300 ease-in-out uppercase text-sm `}
     >
       {btnTitle}
