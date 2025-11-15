@@ -5,7 +5,7 @@ export interface carDetailsTypes {
   model: string;
   category: string;
   year: string;
-  image: string;
+  image: string | URL;
   transmission: string;
   fuelType: string;
   seatingCapacity: number | "";

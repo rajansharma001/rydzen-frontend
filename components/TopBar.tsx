@@ -1,3 +1,4 @@
+"use client";
 import { MailIcon, MapPin, PhoneIcon, User2Icon } from "lucide-react";
 import {
   FaFacebookF,
@@ -8,8 +9,11 @@ import {
 import Link from "next/link";
 import React from "react";
 import { linkeSytle } from "../style";
+import { useProtectedRoute } from "../context/useProtected";
+import { useAuth } from "../context/authProvider";
 
 const TopBar = () => {
+  const { user, logoutUser } = useAuth();
   return (
     <div className="w-full flex md:flex lg:flex flex-col lg:flex-row md:flex-col justify-between items-center  gap-5 p-3 px-15 bg-text-primary text-white ">
       <div className="w-full md:w-full lg:w-[60%] hidden lg:flex md:flex justify-center lg:justify-start">
@@ -32,9 +36,21 @@ const TopBar = () => {
         <ul className="flex gap-5 text-[16px]">
           <li className="flex justify-center items-center gap-3">
             <User2Icon size={18} className="text-primary" />
-            <Link href="/login" className={`${linkeSytle}`}>
-              Login
-            </Link>{" "}
+            {user && user ? (
+              <div className="w-full flex gap-3">
+                <Link href="/admin/dashboard" className={`${linkeSytle}`}>
+                  Dashboard
+                </Link>{" "}
+                <span className="text-gray-500 font-bold">|</span>
+                <button onClick={logoutUser} className={`${linkeSytle}`}>
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link href="/login" className={`${linkeSytle}`}>
+                Login
+              </Link>
+            )}
           </li>
           <span className="text-gray-500 font-bold">|</span>
           <li className=" hover:text-primary cursor-pointer flex justify-center items-center gap-5">

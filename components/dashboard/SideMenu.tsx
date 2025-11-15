@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   Monitor,
   Settings,
+  UserPen,
   Users,
 } from "lucide-react";
 import Link from "next/link";
@@ -63,14 +64,20 @@ const sidemenu = [
     type: "link",
     href: "/admin/dashboard/manage-users",
   },
-
   {
-    label: "Settings",
-    name: "settings",
-    icon: "Settings",
+    label: "Manage Profile",
+    name: "manage_profile",
+    icon: "UserPen",
     type: "link",
-    href: "/admin/dashboard/settings",
+    href: "/admin/dashboard/profile",
   },
+  // {
+  //   label: "Settings",
+  //   name: "settings",
+  //   icon: "Settings",
+  //   type: "link",
+  //   href: "/admin/dashboard/settings",
+  // },
 ];
 
 const icons: Record<string, React.ElementType> = {
@@ -81,6 +88,7 @@ const icons: Record<string, React.ElementType> = {
   Monitor,
   Settings,
   Calendar,
+  UserPen,
 };
 
 const SideMenu = () => {
@@ -112,6 +120,7 @@ const SideMenu = () => {
                       {Icon && <Icon size={16} />}
                       {menu.label}
                     </div>
+
                     <ChevronRight
                       size={15}
                       className={`font-semibold transition-all duration-300 ease-in-out ${

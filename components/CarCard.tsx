@@ -58,7 +58,7 @@ const CarCard = () => {
                   </div>
                 </div>
                 <div className=" py-3 px-5 top-0 w-full flex justify-between items-center  text-sm text-text-secondary font-semibold ">
-                  <h1 className="text-text-primary">{car.pricePerDay}</h1>
+                  <h1 className="text-text-primary">Rs {car.pricePerDay}</h1>
                   <h1 className="py-1 px-2 bg-primary rounded-md text-text-primary">
                     {car.year}
                   </h1>

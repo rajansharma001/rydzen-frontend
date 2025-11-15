@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/authProvider";
+import { UserTypes } from "../../types/userTypes";
 
 interface HeaderProps {
   sideMenuOpen: boolean;
@@ -16,6 +17,7 @@ const Header: React.FC<HeaderProps> = ({ sideMenuOpen, setSideMenuOpen }) => {
   const searchRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
   const notificationRef = useRef<HTMLDivElement>(null);
+  const [userProfile, setUserProfile] = useState<UserTypes>();
 
   const { logoutUser } = useAuth();
 
@@ -45,6 +47,25 @@ const Header: React.FC<HeaderProps> = ({ sideMenuOpen, setSideMenuOpen }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+  }, []);
+
+  const fetchUser = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/profile`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+      const result = await res.json();
+      setUserProfile(result.userProfile);
+    } catch (error) {
+      console.log("API ERROR!");
+    }
+  };
+  useEffect(() => {
+    fetchUser();
   }, []);
 
   return (
@@ -94,15 +115,17 @@ const Header: React.FC<HeaderProps> = ({ sideMenuOpen, setSideMenuOpen }) => {
             onClick={() => setProfileOption(!profileOption)}
           >
             <Image
-              src="/defaultuser.jpeg"
+              src={userProfile?.profileImg || "/defaultuser.jpeg"}
               alt="UserImg"
               width={650}
               height={640}
               className="h-10 w-10 rounded-full  border-2 border-gray-500"
             />
             <div>
-              <h1 className="text-[14px] font-semibold">Rajan</h1>
-              <h2 className="text-[12px]">Admin</h2>
+              <h1 className="text-[14px] font-semibold capitalize">
+                {userProfile?.firstName}
+              </h1>
+              <h2 className="text-[12px]">{userProfile?.role}</h2>
             </div>
             {/* profile options */}
             {profileOption && (
@@ -114,17 +137,17 @@ const Header: React.FC<HeaderProps> = ({ sideMenuOpen, setSideMenuOpen }) => {
                   Dashboard
                 </Link>
                 <Link
-                  href="/admin/profile"
+                  href="/admin/dashboard/profile"
                   className="w-full py-2 px-2 rounded-sm hover:bg-primary hover:text-text-primary hover:font-semibold flex justify-between items-center cursor-pointer transition-all duration-300 ease-in-out"
                 >
                   Profile
                 </Link>
-                <Link
+                {/* <Link
                   href="/admin/settings"
                   className="w-full py-2 px-2 rounded-sm hover:bg-primary hover:text-text-primary hover:font-semibold flex justify-between items-center cursor-pointer transition-all duration-300 ease-in-out"
                 >
                   Settings
-                </Link>
+                </Link> */}
                 <button
                   onClick={logoutUser}
                   className="w-full py-2 px-2 rounded-sm hover:bg-primary hover:text-text-primary hover:font-semibold flex justify-between items-center cursor-pointer transition-all duration-300 ease-in-out"

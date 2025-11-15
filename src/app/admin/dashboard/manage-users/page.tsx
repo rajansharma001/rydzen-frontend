@@ -7,7 +7,7 @@ import { useProtectedRoute } from "../../../../../context/useProtected";
 import Alert from "../../../../../components/alertAndNotification/Alert";
 
 const ManageUsers = () => {
-  useProtectedRoute(["admin"], true);
+  useProtectedRoute(["admin"]);
   const [updatePop, setUpdatePop] = useState(false);
 
   const [message, setMessage] = useState<string>("");
