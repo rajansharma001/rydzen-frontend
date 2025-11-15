@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# rydzen-frontend
 
-## Getting Started
+Frontend for the **Rydzen** platform, built with Next.js, Tailwind CSS, and TypeScript.  
+Provides a modern, responsive UI for users to interact with the backend API, vehicles, and more.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- Built with **Next.js + TypeScript**
+- Styled using **Tailwind CSS** for utility-first design
+- Supports authentication (login/signup) via JWT tokens
+- Communicates with the backend API for vehicle management and CMS
+- Responsive UI optimized for desktop and mobile
+- Uses absolute imports and modular folder structure for scalability
+- Error handling and loading states for better UX
+
+---
+
+## 📁 Project Structure
+
+├── app/ # Pages, layouts, and routing (Next.js)
+├── components/ # Reusable UI components
+├── context/ # Global state / Context API for auth, data
+├── public/ # Static assets (images, icons)
+├── styles/ # Tailwind CSS configurations and global styles
+├── types/ # TypeScript interfaces / types
+├── package.json
+├── tsconfig.json
+├── next.config.js
+└── README.md
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **State Management:** React Context API (or custom hooks)
+- **API Communication:** Fetch / Axios to talk to backend
+- **Authentication:** JWT-based via backend API
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the repo
 
 ```bash
+git clone https://github.com/rajansharma001/rydzen-frontend.git
+cd rydzen-frontend
+2. Install dependencies
+bash
+Copy code
+npm install
+# or
+yarn install
+3. Create .env.local file
+Add the following (or more) variables, depending on your setup:
+
+env
+Copy code
+NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_ANOTHER_KEY=your_key_here
+▶️ Running the Project
+Development
+
+bash
+Copy code
 npm run dev
 # or
 yarn dev
+Production Build
+
+bash
+Copy code
+npm run build
+npm start
 # or
-pnpm dev
-# or
-bun dev
+yarn build
+yarn start
+
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .ts,.tsx",
+    "type-check": "tsc --noEmit"
+  }
+}
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
